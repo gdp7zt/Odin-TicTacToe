@@ -65,6 +65,19 @@ body{
     left: 1px;
 }
 
+.playerNames{
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.playerMarker{
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
 .form{
     display: flex;
     flex-direction: column;
@@ -124,6 +137,18 @@ body{
     display: none;
 }
 
+.mainOutline{
+    display: flex;
+}
+
+.playerInfo{
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: rgb(194, 194, 194);
+    height: 40vw;
+    width: 15vw;
+}
+
 .footer{
     height: 100%;
     width: 100%;
@@ -137,4 +162,10 @@ body{
 
 .footer img{
     margin-left: 20px;
+}
+
+.winMessage{
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Kenia', cursive;
 }

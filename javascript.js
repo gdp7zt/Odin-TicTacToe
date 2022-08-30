@@ -1,3 +1,11 @@
+const player = (XorO) => {
+    const name = '';
+    return {XorO, name};
+}
+
+let player1 = player('X');
+let player2 = player('O');
+
 const gameBoard = (() => {
     let gameboard = ['','','',
                      '','','',
@@ -50,9 +58,14 @@ const gameBoard = (() => {
         let winMessage = document.querySelector(".winMessage");
         let buttons = document.querySelectorAll('.box');
         for(let i = 0; i < 8; i++){
-            if((gameboard[winConditions[i][0]] === 'X' && gameboard[winConditions[i][1]] === 'X' && gameboard[winConditions[i][2]] === 'X') || 
-               (gameboard[winConditions[i][0]] === 'O' && gameboard[winConditions[i][1]] === 'O' && gameboard[winConditions[i][2]] === 'O')){
-                winMessage.innerHTML = 'There is a winner!';
+            if((gameboard[winConditions[i][0]] === 'X' && gameboard[winConditions[i][1]] === 'X' && gameboard[winConditions[i][2]] === 'X')){
+                winMessage.innerHTML = player1.name + " is the winner!";
+                for(let j = 0; j < 9; j++){
+                    buttons[j].setAttribute('disabled', '');
+                }
+            }
+            if((gameboard[winConditions[i][0]] === 'O' && gameboard[winConditions[i][1]] === 'O' && gameboard[winConditions[i][2]] === 'O')){
+                winMessage.innerHTML = player2.name + " is the winner!";
                 for(let j = 0; j < 9; j++){
                     buttons[j].setAttribute('disabled', '');
                 }
@@ -63,7 +76,7 @@ const gameBoard = (() => {
                 counter += 1;
             }
         }
-        if(counter === 9 && winMessage.innerHTML !== 'There is a winner!'){
+        if(counter === 9 && winMessage.innerHTML === ''){
             winMessage.innerHTML = 'It is a tie!';
         }
 
@@ -85,13 +98,8 @@ const gameBoard = (() => {
         }
     }
 
-    return {getGameboard, addMark, checkWin};
+    return {getGameboard};
 })();
-
-const player = (XorO) => {
-    const name = '';
-    return {XorO, name};
-}
 
 const gameFlow = (() => {
     const startGame = () => {
@@ -121,15 +129,37 @@ const gameFlow = (() => {
             form.classList.add('hidden');
             let gameboard = document.querySelector('.gameBoardContainer');
             gameboard.classList.remove('hidden');
-
+            playerInfo();
             return false;
         };
     }
-    let player1 = player('X');
-    let player2 = player('O');
+
+    const playerInfo = () => {
+        const players = document.querySelectorAll('.playerInfo');
+        players[0].classList.remove('hidden');
+        let playerName1 = document.createElement('div');
+        playerName1.innerHTML = player1.name;
+        playerName1.classList.add('playerNames');
+        players[0].appendChild(playerName1);
+        let playerMarker1 = document.createElement('div');
+        playerMarker1.innerHTML = "\"" + player1.XorO + "\"";
+        playerMarker1.classList.add('playerMarker');
+        players[0].appendChild(playerMarker1);
+
+        players[1].classList.remove('hidden');
+        let playerName2 = document.createElement('div');
+        playerName2.innerHTML = player2.name;
+        playerName2.classList.add('playerNames');
+        players[1].appendChild(playerName2);
+        let playerMarker2 = document.createElement('div');
+        playerMarker2.innerHTML = "\"" + player2.XorO + "\"";
+        playerMarker2.classList.add('playerMarker');
+        players[1].appendChild(playerMarker2);
+
+        gameBoard.getGameboard();
+    }
 
     startGame();
-    gameBoard.getGameboard();
 
 })();
 
