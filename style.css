@@ -1,10 +1,41 @@
+body{
+    margin: 0;
+}
+
+.layout{
+    display: grid;
+    grid-template-rows: 100px 78vh 100px;
+}
+
+.header{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center;
+    font-size: 50px;
+    font-weight: 400;
+    font-family: 'Kenia', cursive;
+    z-index: 10;
+    box-shadow: 0px 4px 2px -2px rgb(153, 153, 153, 0.6);
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(228, 228, 228);
+}
+
 .gameBoardContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     width: 40vw;
     height: 40vw;
-    border: 3px solid black;
+    margin-bottom: 20px;
 }
 
 .box{
@@ -14,4 +45,96 @@
     border: 3px solid black;
     font-size: 72px;
     place-content: center;
+}
+
+.startButton{
+    border-radius: 10px;
+    background-color: lightsalmon;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: 0;
+    position: relative;
+}
+
+.startButton:hover{
+    background-color: rgb(252, 148, 107);
+}
+
+.startButton:active{
+    top: 2px;
+    left: 1px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form input[type='text']{
+    border: none;
+    border-radius: 12px;
+    margin-left: 10px;
+    
+}
+
+.form > div{
+    margin-top: 10px;
+}
+.form input[type='submit']{
+    border-radius: 10px;
+    background-color: lightsalmon;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: 0;
+    position: relative;
+    margin-top: 30px;
+}
+
+.form input[type='submit']:hover{
+    background-color: rgb(252, 148, 107);
+}
+
+.form input[type='submit']:active{
+    top:2px;
+    left: 1px;
+}
+
+.resetButton{
+    border-radius: 10px;
+    background-color: lightsalmon;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: 0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.resetButton:hover{
+    background-color: rgb(252, 148, 107);
+}
+
+.resetButton:active{
+    top: 2px;
+    left: 1px;
+}
+
+.hidden {
+    height: 0;
+    width: 0;
+    display: none;
+}
+
+.footer{
+    height: 100%;
+    width: 100%;
+    place-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    background-color: rgb(228,228,228);
+}
+
+.footer img{
+    margin-left: 20px;
 }
